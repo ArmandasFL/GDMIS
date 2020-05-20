@@ -17,7 +17,7 @@
 								</ul>
 								<ul class="footer-links-cases">
 									<li><p>Naujausios funkcijos</p></li>
-									<li><a href="#">GitHUB</a></li>
+									<li><a href="https://github.com/ArmandasFL/GDMIS">GitHUB</a></li>
 									<li><a href="#">GDMIS Youtube channel</a></li>
 								</ul>
 								<div class="footer-sm">

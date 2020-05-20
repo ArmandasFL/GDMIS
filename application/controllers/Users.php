@@ -1,6 +1,6 @@
 <?php
 	class Users extends CI_Controller{
-		// Register user
+		// Užregistruojam vartotoją
 		public function register(){
 			$data['title'] = 'Užsiregistruoti';
 
@@ -15,19 +15,19 @@
 				$this->load->view('users/register', $data);
 				$this->load->view('templates/footer');
 			} else {
-				// Encrypt password
+				// Encryptinam slaptažodį
 				$enc_password = md5($this->input->post('password'));
 
 				$this->user_model->register($enc_password);
 
-				// Set message
+				// Pridedam flash žinutę
 				$this->session->set_flashdata('user_registered', 'Jūs užsiregistravote ir dabar galite prisijungti');
 
 				redirect('posts');
 			}
 		}
 
-		// Log in user
+		// Vartotojo prisijungimas
 		public function login(){
 			$data['title'] = 'Prisijungti';
 
@@ -40,17 +40,17 @@
 				$this->load->view('templates/footer');
 			} else {
 
-				// Get username
+				// Gaunam vartotojo vardą
 				$username = $this->input->post('username');
-				// Get and encrypt the password
+				// Gaunam ir Encryptinam slaptažodį
 				$password = md5($this->input->post('password'));
 
-				// Login user
+				// Prijungiam vartotoją
 				$user_id = $this->user_model->login($username, $password);
 
-				// id check
+				// Žiūrim id
 				if(!($user_id === false)){
-					// Create session
+					// Sukuriam sesiją
 					$user_data = array(
 						'user_id' => $user_id,
 						'username' => $username,
@@ -59,12 +59,12 @@
 
 					$this->session->set_userdata($user_data);
 
-					// Set message
+					// Pridedam flash žinutę
 					$this->session->set_flashdata('user_loggedin', 'Jūs sėkmingai prisijungėte');
 
 					redirect('posts');
 				} else {
-					// Set message
+					// Pridedam flash žinutę
 					$this->session->set_flashdata('login_failed', 'Prisijungimas netinkamas');
 
 					redirect('users/login');
@@ -72,20 +72,20 @@
 			}
 		}
 
-		// Log user out
+		// Atsijungiam
 		public function logout(){
-			// Unset user data
+			// Atskiriam vartotojo duomenis nuo puslapio
 			$this->session->unset_userdata('logged_in');
 			$this->session->unset_userdata('user_id');
 			$this->session->unset_userdata('username');
 
-			// Set message
+			// Pridedam flash žinutę
 			$this->session->set_flashdata('user_loggedout', 'Jūs atsijungėte');
 
 			redirect('users/login');
 		}
 
-		// Check if username exists
+		// Žiūrim ar vartotojas egzistuoja
 		public function check_username_exists($username){
 			$this->form_validation->set_message('check_username_exists', 'Vartotojo vardas yra užimtas. Prašome pasirinkti kitokį');
 			if($this->user_model->check_username_exists($username)){
@@ -95,7 +95,7 @@
 			}
 		}
 
-		// Check if email exists
+		// Žiūrim ar emailas egzistuoja
 		public function check_email_exists($email){
 			$this->form_validation->set_message('check_email_exists', 'Emailas yra užimtas. That email is taken. Prašome pasirinkti kitokį');
 			if($this->user_model->check_email_exists($email)){

@@ -1,7 +1,7 @@
 <?php
 	class Posts extends CI_Controller{
 		public function index($offset = 0){
-			// Pagination Config
+			// Eilė puslapių skaičių, konfiguracija (Kad galėtume padaryti ant vieno puslapio knygą)
 			$config['base_url'] = base_url() . 'posts/index/';
 			$config['total_rows'] = $this->db->count_all('posts');
 			$config['total_columns'] = $this->db->count_all('posts');
@@ -9,7 +9,7 @@
 			$config['uri_segment'] = 3;
 			$config['attributes'] = array('class' => 'pagination-link');
 
-			// Init Pagination
+			// Init puslapių skaičius ant vieno controllerio
 			$this->pagination->initialize($config);
 
 			$data['title'] = 'Naujausi Postai';
@@ -38,7 +38,7 @@
 		}
 
 		public function create(){
-			// Check login
+			// Žiūrim Login
 			if(!$this->session->userdata('logged_in')){
 				redirect('users/login');
 			}
@@ -55,7 +55,7 @@
 				$this->load->view('posts/create', $data);
 				$this->load->view('templates/footer');
 			} else {
-				// Upload Image
+				// Įkeliam nuotrauką
 				$config['upload_path'] = './assets/images/posts';
 				$config['allowed_types'] = 'gif|jpg|png';
 				$config['max_size'] = '2048';
@@ -74,7 +74,7 @@
 
 				$this->post_model->create_post($post_image);
 
-				// Set message
+				// Pridedam flash žinutę
 				$this->session->set_flashdata('post_created', 'Jūsų postas buvo sukurtas');
 
 				redirect('posts');
@@ -82,28 +82,28 @@
 		}
 
 		public function delete($id){
-			// Check login
+			// Žiūrim Login
 			if(!$this->session->userdata('logged_in')){
 				redirect('users/login');
 			}
 
 			$this->post_model->delete_post($id);
 
-			// Set message
+			// Pridedam flash žinutę
 			$this->session->set_flashdata('post_deleted', 'Jūsų postas buvo ištrintas');
 
 			redirect('posts');
 		}
 
 		public function edit($slug){
-			// Check login
+			// Žiūrim Login
 			if(!$this->session->userdata('logged_in')){
 				redirect('users/login');
 			}
 
 			$data['post'] = $this->post_model->get_posts($slug);
 
-			// Check user
+			// Žiūrim Vartotoją
 			if($this->session->userdata('user_id') != $this->post_model->get_posts($slug)['user_id']){
 				redirect('posts');
 
@@ -123,14 +123,14 @@
 		}
 
 		public function update(){
-			// Check login
+			// Žiūrim Login
 			if(!$this->session->userdata('logged_in')){
 				redirect('users/login');
 			}
 
 			$this->post_model->update_post();
 
-			// Set message
+			// Pridedam flash žinutę
 			$this->session->set_flashdata('post_updated', 'Jūsų postas buvo atnaujintas');
 
 			redirect('posts');

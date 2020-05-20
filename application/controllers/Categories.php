@@ -11,7 +11,7 @@
 		}
 
 		public function create(){
-			// Check login
+			// Žiūrim Login
 			if(!$this->session->userdata('logged_in')){
 				redirect('users/login');
 			}
@@ -27,7 +27,7 @@
 			} else {
 				$this->category_model->create_category();
 
-				// Set message
+				// Pridedam flash žinutę
 				$this->session->set_flashdata('category_created', 'Jūsų kategorija buvo sukurta');
 
 				redirect('categories');
@@ -45,14 +45,14 @@
 		}
 
 		public function delete($id){
-			// Check login
+			// Žiūrim Login
 			if(!$this->session->userdata('logged_in')){
 				redirect('users/login');
 			}
 
 			$this->category_model->delete_category($id);
 
-			// Set message
+			// Pridedam flash žinutę
 			$this->session->set_flashdata('category_deleted', 'Jūsų kategorija buvo ištrinta');
 
 			redirect('categories');

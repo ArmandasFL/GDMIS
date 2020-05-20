@@ -10,13 +10,13 @@
                 'zipcode' => $this->input->post('zipcode')
 			);
 
-			// Insert user
+			// Įkeliam Vartotoją
 			return $this->db->insert('users', $data);
 		}
 
-		// Log user in
+		// Prijungiam Vartotoją
 		public function login($username, $password){
-			// Validate
+			// Tvirtinam
 			$this->db->where('username', $username);
 			$this->db->where('password', $password);
 
@@ -29,7 +29,7 @@
 			}
 		}
 
-		// Check username exists
+		// Žiūrim ar Vartotojo Vardas egzsistuoja
 		public function check_username_exists($username){
 			$query = $this->db->get_where('users', array('username' => $username));
 			if(empty($query->row_array())){
@@ -39,7 +39,7 @@
 			}
 		}
 
-		// Check email exists
+		// Žiūrim ar Emailas egzsistuoja
 		public function check_email_exists($email){
 			$query = $this->db->get_where('users', array('email' => $email));
 			if(empty($query->row_array())){

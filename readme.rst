@@ -1,5 +1,5 @@
 Jei pas jus yra sukurtas pass ant root.
-Tai prieš paleidžiant websaitą nueikit į "GDMIS\application\config\database.php"
+Tai prieš paleidžiant websaitą nueikit į "GDMIS/application/config/database.php"
 Ir pridėkite apačioje savo root pass.
 
 

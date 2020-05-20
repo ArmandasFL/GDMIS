@@ -18,16 +18,16 @@
 								<ul class="footer-links-cases">
 									<li><p>Naujausios funkcijos</p></li>
 									<li><a href="https://github.com/ArmandasFL/GDMIS">GitHUB</a></li>
-									<li><a href="#">GDMIS Youtube channel</a></li>
+									<li><a href="https://www.youtube.com/watch?v=kLnTkUh46oo">GDMIS Youtube Video</a></li>
 								</ul>
 								<div class="footer-sm">
-									<a href="#">
+									<a href="https://www.youtube.com/watch?v=kLnTkUh46oo">
 										<img src="assets/images/youtube-symbol.png" alt="youtube icon">
 									</a>
-									<a href="#">
+									<a href="https://twitter.com/Motedaccess">
 										<img src="assets/images/twitter-logo-button.png" alt="youtube icon">
 									</a>
-									<a href="#">
+									<a href="https://www.facebook.com/armandas.simkus/">
 										<img src="assets/images/facebook-logo-button.png" alt="youtube icon">
 									</a>
 								</div>

@@ -2,6 +2,9 @@ Jei pas jus yra sukurtas pass ant root.
 Tai prieš paleidžiant websaitą nueikit į "GDMIS/application/config/database.php"
 Ir pridėkite apačioje savo root pass.
 
+DB - gdmismain.sql
+
+Youtube Video "https://www.youtube.com/watch?v=kLnTkUh46oo"
 
 
 ###################

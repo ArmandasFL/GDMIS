@@ -10,6 +10,7 @@
 	<nav class="navbar navbar-inverse">
       <div class="container">
 				<div class="logo">
+					<a href="<?php echo base_url(); ?>">
            <img src="assets/images/dimplomas.png">
         </div>
         <div class="navbar-header">
